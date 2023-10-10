@@ -67,7 +67,7 @@ SPECTACULAR_SETTINGS = {
         "displayOperationId": True,
         "docExpansion": "none",
     },
-    "TITLE": "Movie Selector API",
+    "TITLE": "Maxgram API",
     "VERSION": "0.0.1",
     "DESCRIPTION": "",
     "SERVE_INCLUDE_SCHEMA": False,
