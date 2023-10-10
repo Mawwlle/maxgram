@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "maxgram"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.5"
+django-rest-framework = "^0.1.0"
+drf-spectacular = "^0.26.4"
+djangorestframework-simplejwt = "^5.3.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+mypy = "^1.5.1"
+black = "^23.7.0"
+ruff = "^0.0.284"
+types-python-dateutil = "^2.8.19.14"
+types-requests = "^2.31.0.2"
+django-stubs = "^4.2.3"
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+select = ["E", "F", "UP", "N", "C", "B", "I001", "E501"]
+
+[tool.ruff.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.isort]
+combine-as-imports = true
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+python_version = 3.11
+warn_return_any = true
+warn_unreachable = true
+warn_redundant_casts = true
+ignore_missing_imports = true
+check_untyped_defs = false
+
+[tool.django-stubs]
+django_settings_module = "core.settings"
