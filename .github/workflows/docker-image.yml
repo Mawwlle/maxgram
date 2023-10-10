@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag backend
     - name: Stop the Docker Container
-      run: docker stop backend
+      run: docker stop backend || true
     - name: Run Docker Image
       run: docker run -p 8000:8000 -d --rm --name backend backend
