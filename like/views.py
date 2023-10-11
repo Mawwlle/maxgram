@@ -1,14 +1,14 @@
 from rest_framework import permissions, viewsets
 from rest_framework.generics import get_object_or_404
 
-from comment.models import Comment
-from comment.serializers import CommentSerializer
+from like.models import Like
+from like.serializers import LikeSerializer
 from user.models import User
 
 
-class CommentViewSet(viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
-    serializer_class = CommentSerializer
+class LikeViewSet(viewsets.ModelViewSet):
+    queryset = Like.objects.all()
+    serializer_class = LikeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = ["user", "photo"]
 
@@ -19,6 +19,6 @@ class CommentViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-    def perform_create(self, serializer: CommentSerializer) -> None:
+    def perform_create(self, serializer: LikeSerializer) -> None:
         user = get_object_or_404(User, pk=self.request.user.pk)
         serializer.save(user=user)
