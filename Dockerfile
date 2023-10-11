@@ -23,5 +23,7 @@ COPY . .
 
 EXPOSE 8000
 
+RUN poetry run python ./manage.py migrate
+
 # Запускаем команду для запуска Gunicorn сервера
 CMD ["poetry", "run", "gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]
