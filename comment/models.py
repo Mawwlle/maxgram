@@ -1,6 +1,6 @@
 from django.db import models
-from photo.models import Photo
 
+from photo.models import Photo
 from user.models import User
 
 
