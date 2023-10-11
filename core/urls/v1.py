@@ -21,4 +21,5 @@ urlpatterns = [
     path("", include(auth)),
     path("", include("user.urls")),
     path("", include("photo.urls")),
+    path("", include("comment.urls")),
 ]

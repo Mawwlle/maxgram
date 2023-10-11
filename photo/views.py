@@ -1,6 +1,5 @@
 from django.http import FileResponse
-from drf_spectacular.utils import extend_schema
-from rest_framework import parsers, permissions, status, viewsets
+from rest_framework import parsers, permissions, viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.request import Request
 
@@ -14,14 +13,19 @@ class PhotoViewSet(viewsets.ModelViewSet):
     serializer_class = PhotoSerializer
     parser_classes = [parsers.MultiPartParser]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+    filterset_fields = ["created_at", "user"]
+    search_fields = ["caption"]
 
     def get_queryset(self):
-        return super().get_queryset().filter(user=self.request.user.pk)
+        queryset = super().get_queryset()
+        if self.action in ["update", "partial_update", "destroy"]:
+            queryset = queryset.filter(user=self.request.user.pk)
+
+        return queryset
 
     def perform_create(self, serializer: PhotoSerializer) -> None:
         user = get_object_or_404(User, pk=self.request.user.pk)
         serializer.save(user=user)
 
-    @extend_schema(responses={status.HTTP_200_OK: FileResponse})
     def retrieve(self, request: Request, *args, **kwargs) -> FileResponse:
         return FileResponse(self.get_object().image)
