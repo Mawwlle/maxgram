@@ -1,15 +1,12 @@
-from http.client import responses
 from django.http import FileResponse
-from rest_framework import viewsets
-from rest_framework import parsers
+from drf_spectacular.utils import extend_schema
+from rest_framework import parsers, permissions, status, viewsets
+from rest_framework.generics import get_object_or_404
+from rest_framework.request import Request
+
 from photo.models import Photo
 from photo.serializers import PhotoSerializer
-from rest_framework.generics import get_object_or_404
 from user.models import User
-from rest_framework import permissions
-from rest_framework.request import Request
-from rest_framework import status
-from drf_spectacular.utils import extend_schema
 
 
 class PhotoViewSet(viewsets.ModelViewSet):
