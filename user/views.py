@@ -1,4 +1,6 @@
 from rest_framework import permissions, viewsets
+from rest_framework.decorators import action
+from rest_framework.response import Response
 
 from user.models import User
 from user.permissions import IsOwnerOrAdmin
@@ -16,3 +18,8 @@ class UserViewSet(viewsets.ModelViewSet):
             return [IsOwnerOrAdmin()]
 
         return [permissions.IsAuthenticated()]
+
+    @action(detail=False, methods=["get"])
+    def me(self, request) -> Response:
+        serializer = self.get_serializer(request.user)
+        return Response(serializer.data)
