@@ -15,6 +15,6 @@ jobs:
       - name: Trigger Pipeline in Repository B
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
           event-type: "pipeline"
