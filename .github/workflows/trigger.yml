@@ -17,4 +17,4 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
-          event-type: "pipeline"
+          event-type: "Deploy"
