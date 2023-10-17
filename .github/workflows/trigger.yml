@@ -1,0 +1,20 @@
+name: Trigger Pipeline
+
+on:
+  workflow_dispatch:
+    inputs:
+      repository: # Input to specify the target repository
+        description: "Target repository"
+        required: true
+        default: "Mawwlle/maxgram-deploy" # Default value for the target repository
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Pipeline in Repository B
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          repository: ${{ github.event.inputs.repository }}
+          event-type: "pipeline"
