@@ -13,8 +13,8 @@ jobs:
 
     steps:
       - name: Trigger Pipeline in Repository B
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v2
         with:
           token: ${{ secrets.PAT }}
           repository: ${{ github.event.inputs.repository }}
-          event-type: "Deploy"
+          event-type: "deploy"
