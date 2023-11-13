@@ -41,9 +41,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     "user",
-    "photo",
-    "comment",
-    "like",
+    "car",
+    "django_extensions",
 ]
 AUTH_USER_MODEL = "user.User"
 
@@ -73,7 +72,7 @@ SPECTACULAR_SETTINGS = {
         "displayOperationId": True,
         "docExpansion": "none",
     },
-    "TITLE": "Maxgram API",
+    "TITLE": "CarSale API",
     "VERSION": "0.0.1",
     "DESCRIPTION": "",
     "SERVE_INCLUDE_SCHEMA": False,
