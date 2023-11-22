@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from photo.models import Photo
+from post.models import Post
 from user.serializers import ShortUserSerializer
 
 
-class PhotoSerializer(serializers.ModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     user = ShortUserSerializer(read_only=True)
-    image = serializers.ImageField(write_only=True)
+    text = serializers.CharField(write_only=True)
 
     class Meta:
-        model = Photo
+        model = Post
         fields = "__all__"

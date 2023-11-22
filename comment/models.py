@@ -1,6 +1,6 @@
 from django.db import models
 
-from photo.models import Photo
+from post.models import Post
 from user.models import User
 
 
@@ -8,4 +8,4 @@ from user.models import User
 class Comment(models.Model):
     content = models.TextField()
     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
-    photo = models.ForeignKey(to=Photo, on_delete=models.CASCADE)
+    post = models.ForeignKey(to=Post, on_delete=models.CASCADE)

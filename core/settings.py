@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "drf_spectacular",
     "user",
-    "photo",
+    "post",
     "comment",
     "like",
 ]

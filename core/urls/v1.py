@@ -20,7 +20,7 @@ urlpatterns = [
     path("docs/", include(docs)),
     path("", include(auth)),
     path("", include("user.urls")),
-    path("", include("photo.urls")),
+    path("", include("post.urls")),
     path("", include("comment.urls")),
     path("", include("like.urls")),
 ]

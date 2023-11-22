@@ -3,14 +3,14 @@ from rest_framework import parsers, permissions, viewsets
 from rest_framework.generics import get_object_or_404
 from rest_framework.request import Request
 
-from photo.models import Photo
-from photo.serializers import PhotoSerializer
+from post.models import Post
+from post.serializers import PostSerializer
 from user.models import User
 
 
-class PhotoViewSet(viewsets.ModelViewSet):
-    queryset = Photo.objects.all()
-    serializer_class = PhotoSerializer
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
     parser_classes = [parsers.MultiPartParser]
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     filterset_fields = ["created_at", "user"]
@@ -23,7 +23,7 @@ class PhotoViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-    def perform_create(self, serializer: PhotoSerializer) -> None:
+    def perform_create(self, serializer: PostSerializer) -> None:
         user = get_object_or_404(User, pk=self.request.user.pk)
         serializer.save(user=user)
 

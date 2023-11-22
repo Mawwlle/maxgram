@@ -10,7 +10,7 @@ class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filterset_fields = ["user", "photo"]
+    filterset_fields = ["user", "post"]
 
     def get_queryset(self):
         queryset = super().get_queryset()

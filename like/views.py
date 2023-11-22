@@ -10,7 +10,7 @@ class LikeViewSet(viewsets.ModelViewSet):
     queryset = Like.objects.all()
     serializer_class = LikeSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filterset_fields = ["user", "photo"]
+    filterset_fields = ["user", "post"]
 
     def get_queryset(self):
         queryset = super().get_queryset()
